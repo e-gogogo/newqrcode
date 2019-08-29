@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3.dtd">
+<mapper namespace="dao.CustomerMapper">
+    <select id="getCustomerByCname" parameterType="String" resultType="Customer">
+		select * from customer where Cname=#{Cname}
+	</select>
+	<select id="getCustomerByCmail" parameterType="String" resultType="Customer">
+		select * from customer where Cmail=#{Cmail}
+	</select>
+	<update id="updateCustomerCpw" parameterType="Customer">
+	update customer
+	set Cpw = #{Cpw}
+	where Cid = #{Cid}
+	</update>
+	
+	<insert id = "addCustomer" parameterType = "Customer" useGeneratedKeys="true" keyProperty="Cid">
+	    insert into Customer(Cname,Cpw,Cmail)
+		values(#{Cname},#{Cpw},#{Cmail})
+	</insert>
+</mapper>
